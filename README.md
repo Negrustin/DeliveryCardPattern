@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/ch2cge2sa7py2jrl?svg=true)](https://ci.appveyor.com/project/Negrustin/deliverycardpattern)
