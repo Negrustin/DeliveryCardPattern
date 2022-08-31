@@ -2,8 +2,6 @@ package ru.netology.delivery.data;
 
 import com.github.javafaker.Faker;
 import lombok.Value;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -17,21 +15,16 @@ public class DataGenerator {
 
 
 
-    public static String generateDate(int shift) throws ParseException {
-        Faker faker = new Faker();
-
+    public static String generateDate(int shift) {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        int startDate = 4;
+        int endDate = shift;
 
-        String firstDateString = date.plusDays(3).format(formatters);
-        String secondDateString = date.plusDays(shift).format(formatters);
+        LocalDate StartCallDate = date.plusDays(endDate);
 
-
-        java.util.Date startDate = new SimpleDateFormat("dd.MM.yyyy").parse(firstDateString);
-        java.util.Date endDate = new SimpleDateFormat("dd.MM.yyyy").parse(secondDateString);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-        String randomDate = sdf.format(faker.date().between(startDate,endDate));
+        int dateRange = startDate + (int) (Math.random() * endDate);
+        String randomDate = StartCallDate.plusDays(dateRange).format(formatters);
 
         return randomDate;
     }
